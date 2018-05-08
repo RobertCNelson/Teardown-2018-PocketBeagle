@@ -11,6 +11,11 @@ else
 	export CC=`pwd`/toolchain/gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
 fi
 
+if [ -f /usr/bin/ccache ] ; then
+	echo "ccache [enabled]"
+	CC="ccache ${CC}"
+fi
+
 cd ./u-boot/u-boot-2018.03/
 
 if [ ! -f ./.rcnee.patched ] ; then
