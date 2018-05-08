@@ -1,8 +1,14 @@
 #!/bin/bash -e
 
 CORES=$(getconf _NPROCESSORS_ONLN)
+ARCH=$(uname -m)
 
-export CC=`pwd`/toolchain/gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+if [ "x${ARCH}" = "xarmv7l" ] ; then
+	#Native arm gcc compiler
+	CC=
+else
+	export CC=`pwd`/toolchain/gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+fi
 
 cd ./u-boot/u-boot-2018.03/
 
