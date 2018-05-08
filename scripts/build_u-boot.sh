@@ -20,7 +20,7 @@ fi
 
 make ARCH=arm CROSS_COMPILE=${CC} distclean
 make ARCH=arm CROSS_COMPILE=${CC} am335x_evm_defconfig
-make -j${CORES} ARCH=arm CROSS_COMPILE=${CC}
+time make -j${CORES} ARCH=arm CROSS_COMPILE=${CC}
 
 if [ -f ./MLO ] ; then
 	cp -v ./MLO ../../deploy/MLO
