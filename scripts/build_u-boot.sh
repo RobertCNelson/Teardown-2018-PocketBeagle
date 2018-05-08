@@ -6,6 +6,7 @@ ARCH=$(uname -m)
 if [ "x${ARCH}" = "xarmv7l" ] ; then
 	#Native arm gcc compiler
 	CC=
+	CORES=2
 else
 	export CC=`pwd`/toolchain/gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
 fi
