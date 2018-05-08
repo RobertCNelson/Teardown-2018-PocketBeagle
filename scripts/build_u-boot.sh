@@ -21,10 +21,10 @@ cd ./u-boot/u-boot-2018.03/
 if [ ! -f ./.rcnee.patched ] ; then
 	patch -p1 < ../0001-am335x_evm-uEnv.txt-bootz-n-fixes.patch
 	patch -p1 < ../0002-U-Boot-BeagleBone-Cape-Manager.patch
+	make ARCH=arm CROSS_COMPILE="${CC}" distclean
 	touch ./.rcnee.patched
 fi
 
-make ARCH=arm CROSS_COMPILE="${CC}" distclean
 make ARCH=arm CROSS_COMPILE="${CC}" am335x_evm_defconfig
 time make -j${CORES} ARCH=arm CROSS_COMPILE="${CC}"
 
