@@ -24,9 +24,9 @@ if [ ! -f ./.rcnee.patched ] ; then
 	touch ./.rcnee.patched
 fi
 
-make ARCH=arm CROSS_COMPILE=${CC} distclean
-make ARCH=arm CROSS_COMPILE=${CC} am335x_evm_defconfig
-time make -j${CORES} ARCH=arm CROSS_COMPILE=${CC}
+make ARCH=arm CROSS_COMPILE="${CC}" distclean
+make ARCH=arm CROSS_COMPILE="${CC}" am335x_evm_defconfig
+time make -j${CORES} ARCH=arm CROSS_COMPILE="${CC}"
 
 if [ ! -d ../../deploy/ ] ; then
 	mkdir ../../deploy/
