@@ -12,9 +12,10 @@ fi
 
 cd ./u-boot/u-boot-2018.03/
 
-if [ ! -f ./configs/am335x_pocketbeagle_defconfig ] ; then
+if [ ! -f ./.rcnee.patched ] ; then
 	patch -p1 < ../0001-am335x_evm-uEnv.txt-bootz-n-fixes.patch
 	patch -p1 < ../0002-U-Boot-BeagleBone-Cape-Manager.patch
+	touch ./.rcnee.patched
 fi
 
 make ARCH=arm CROSS_COMPILE=${CC} distclean
