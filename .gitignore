@@ -1,0 +1,4 @@
+u-boot/u-boot*tar.bz2
+u-boot/u-boot*/
+deploy/MLO
+deploy/u-boot.img
