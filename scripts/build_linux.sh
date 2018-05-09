@@ -30,7 +30,7 @@ else
 	cp -v ./.config ../defconfig
 fi
 
-make -j${CORES} ARCH=arm CROSS_COMPILE=${CC} zImage modules
+time make -j${CORES} ARCH=arm CROSS_COMPILE=${CC} zImage modules
 
 make ARCH=arm CROSS_COMPILE=${CC} dtbs
 
