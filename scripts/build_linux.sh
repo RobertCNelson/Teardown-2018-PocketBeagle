@@ -18,10 +18,10 @@ cd ./linux/linux-${kernel_ver}/
 if [ ! -f ./arch/arm/configs/rcn-ee_defconfig ] ; then
 	patch -p1 < ../patch-4.14.39-ti-r47.diff
 	cp -v ../am* ./firmware/
+	make ARCH=arm CROSS_COMPILE=${CC} distclean
 fi
 
 if [ "x${ARCH}" = "xarmv7l" ] ; then
-	make ARCH=arm CROSS_COMPILE=${CC} distclean
 	cp -v ../defconfig ./.config
 else
 	make ARCH=arm CROSS_COMPILE=${CC} distclean
