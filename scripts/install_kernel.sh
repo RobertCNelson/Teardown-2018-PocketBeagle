@@ -26,10 +26,8 @@ if [ "x${ARCH}" = "xarmv7l" ] ; then
 		if [ ! "x${older_kernel}" = "x" ] ; then
 			if [ ! "x${older_kernel}" = "x${version}" ] ; then
 				echo "zz-uenv_txt: Updating /boot/uEnv.txt [uname_r=${version}]"
-				sed -i -e "s:uname_r=$older_kernel:uname_r=$version:g" /boot/uEnv.txt
+				sudo sed -i -e "s:uname_r=$older_kernel:uname_r=$version:g" /boot/uEnv.txt
 			fi
-		else
-			echo "uname_r=${version}" >> /boot/uEnv.txt
 		fi
 	fi
 
@@ -50,6 +48,8 @@ if [ "x${ARCH}" = "xarmv7l" ] ; then
 		echo "Copying Modules"
 		sudo tar xf ./deploy/modules.tar.gz -C /
 	fi
+
+	sync
 else
 	. system.sh
 
