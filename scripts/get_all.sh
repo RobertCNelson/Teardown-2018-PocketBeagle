@@ -2,6 +2,8 @@
 
 web_mirror="http://rcn-ee.online/mirror/"
 
+ARCH=$(uname -m)
+
 dl_web () {
 	wget --progress=bar:force -c --directory-prefix=./${pre}/ ${web_mirror}${pre}/${file}
 }
@@ -14,9 +16,11 @@ if [ ! -d ./rootfs ] ; then
 	mkdir ./rootfs/
 fi
 
-#pre="toolchain"
-#file="gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf.tar.xz"
-#dl_web
+if [ ! "x${ARCH}" = "xarmv7l" ] ; then
+	pre="toolchain"
+	file="gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf.tar.xz"
+	dl_web
+fi
 
 pre="linux"
 file="linux-4.14.39.tar.xz"
@@ -30,18 +34,20 @@ dl_web
 #file="debian-9.2-iot-armhf-2017-11-08.tar.xz"
 #dl_web
 
-#if [ -f ./toolchain/gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf/gcc-linaro-6.4.1-2017.08-linux-manifest.txt ] ; then
-#	rm -rf ./toolchain/gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf/ || true
-#	echo "extracting: gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf.tar.xz"
-#	cd ./toolchain/
-#	tar xf gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf.tar.xz
-#	cd ../
-#else
-#	echo "extracting: gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf.tar.xz"
-#	cd ./toolchain/
-#	tar xf gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf.tar.xz
-#	cd ../
-#fi
+if [ ! "x${ARCH}" = "xarmv7l" ] ; then
+	if [ -f ./toolchain/gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf/gcc-linaro-6.4.1-2017.08-linux-manifest.txt ] ; then
+		rm -rf ./toolchain/gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf/ || true
+		echo "extracting: gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf.tar.xz"
+		cd ./toolchain/
+		tar xf gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf.tar.xz
+		cd ../
+	else
+		echo "extracting: gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf.tar.xz"
+		cd ./toolchain/
+		tar xf gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf.tar.xz
+		cd ../
+	fi
+fi
 
 if [ -f ./u-boot/u-boot-2018.03/Makefile ] ; then
 	rm -rf ./u-boot/u-boot-2018.03/ || true
