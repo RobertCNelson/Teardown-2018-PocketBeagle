@@ -24,7 +24,6 @@ fi
 if [ "x${ARCH}" = "xarmv7l" ] ; then
 	cp -v ../defconfig ./.config
 else
-	make ARCH=arm CROSS_COMPILE=${CC} distclean
 	cp -v ../defconfig ./.config
 	make ARCH=arm CROSS_COMPILE=${CC} menuconfig
 	cp -v ./.config ../defconfig
