@@ -82,7 +82,7 @@ else
 				sudo mkdir -p /media/rootfs/boot/dtbs/4.14.39/
 			fi
 			echo "Copying Device Tree Binary"
-			sudo cp -v ./deploy/am335x-pocketbeagle.dtb /media/rootfs/boot/dtbs/4.14.0-bone3/
+			sudo cp -v ./deploy/am335x-pocketbeagle.dtb /media/rootfs/boot/dtbs/4.14.39/
 		fi
 
 		if [ -f ./deploy/modules.tar.gz ] ; then
