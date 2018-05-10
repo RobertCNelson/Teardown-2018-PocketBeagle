@@ -6,4 +6,4 @@ https://docs.google.com/
 
 ## Hardware
 
-Part List: http://www.digikey.com/short/
+Part List: http://www.digikey.com/short/jm32bv
