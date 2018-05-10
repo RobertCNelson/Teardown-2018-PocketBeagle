@@ -1,7 +1,4 @@
 #!/bin/bash
 
-echo "GPIO50: config-pin -q P2_01"
-config-pin -q P2_01
-sleep 1
-echo "GPIO50: config-pin -l P2_01"
-config-pin -l P2_01
+cd /sys/devices/platform/ocp/48302000.epwmss/48302200.pwm/pwm/pwmchip*/
+ls -lha ./
