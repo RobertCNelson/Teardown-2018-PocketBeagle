@@ -30,9 +30,11 @@ pre="u-boot"
 file="u-boot-2018.03.tar.bz2"
 dl_web
 
-#pre="rootfs"
-#file="debian-9.2-iot-armhf-2017-11-08.tar.xz"
-#dl_web
+if [ ! "x${ARCH}" = "xarmv7l" ] ; then
+	pre="rootfs"
+	file="debian-9.4-iot-armhf-2018-05-10.tar.xz"
+	dl_web
+fi
 
 if [ ! "x${ARCH}" = "xarmv7l" ] ; then
 	if [ -f ./toolchain/gcc-linaro-6.4.1-2017.08-x86_64_arm-linux-gnueabihf/gcc-linaro-6.4.1-2017.08-linux-manifest.txt ] ; then
@@ -75,17 +77,17 @@ else
 	cd ../
 fi
 
-#if [ -f ./rootfs/debian-9.2-iot-armhf-2017-11-08/armhf-rootfs-debian-stretch.tar ] ; then
-#	rm -rf ./rootfs/debian-9.2-iot-armhf-2017-11-08/ || true
-#	echo "extracting: debian-9.2-iot-armhf-2017-11-08.tar.xz"
-#	cd ./rootfs/
-#	tar xf debian-9.2-iot-armhf-2017-11-08.tar.xz
-#	cd ../
-#else
-#	echo "extracting: debian-9.2-iot-armhf-2017-11-08.tar.xz"
-#	cd ./rootfs/
-#	tar xf debian-9.2-iot-armhf-2017-11-08.tar.xz
-#	cd ../
-#fi
-
-
+if [ ! "x${ARCH}" = "xarmv7l" ] ; then
+	if [ -f ./rootfs/debian-9.4-iot-armhf-2018-05-10/armhf-rootfs-debian-stretch.tar ] ; then
+		rm -rf ./rootfs/debian-9.4-iot-armhf-2018-05-10/ || true
+		echo "extracting: debian-9.4-iot-armhf-2018-05-10.tar.xz"
+		cd ./rootfs/
+		tar xf debian-9.4-iot-armhf-2018-05-10.tar.xz
+		cd ../
+	else
+		echo "extracting: debian-9.4-iot-armhf-2018-05-10.tar.xz"
+		cd ./rootfs/
+		tar xf debian-9.4-iot-armhf-2018-05-10.tar.xz
+		cd ../
+	fi
+fi
