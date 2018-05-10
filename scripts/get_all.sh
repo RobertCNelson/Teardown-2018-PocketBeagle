@@ -65,11 +65,13 @@ else
 fi
 
 if [ -f ./linux/linux-4.14.39/Makefile ] ; then
-	rm -rf ./linux/linux-4.14.39/ || true
-	echo "extracting: linux-4.14.39.tar.xz"
-	cd ./linux/
-	tar xf linux-4.14.39.tar.xz
-	cd ../
+	if [ -f ./deploy/zImage ] ; then
+		rm -rf ./linux/linux-4.14.39/ || true
+		echo "extracting: linux-4.14.39.tar.xz"
+		cd ./linux/
+		tar xf linux-4.14.39.tar.xz
+		cd ../
+	fi
 else
 	echo "extracting: linux-4.14.39.tar.xz"
 	cd ./linux/
