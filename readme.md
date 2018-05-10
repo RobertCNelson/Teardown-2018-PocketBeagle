@@ -10,4 +10,4 @@ Part List: http://www.digikey.com/short/jm32bv
 
 ## distro packages:
 
-git unxz xz-utils lbzip2 bc flex bison make libncurses-dev lzop
+git xz-utils lbzip2 bc flex bison make libncurses-dev lzop
