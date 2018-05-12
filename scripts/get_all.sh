@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-web_mirror="http://rcn-ee.online/mirror/"
+#web_mirror="http://rcn-ee.online/mirror/"
+web_mirror="http://192.168.8.10/"
 
 ARCH=$(uname -m)
 
